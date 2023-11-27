@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Text, TextInput, View, TouchableOpacity, Vibration } from 'react-native';
 import ResultImc from './ResultImc/';
 import styles from './style';
+import { Keyboard } from 'react-native';
 
 export default function Form() {
 
@@ -50,7 +51,7 @@ export default function Form() {
                 onChangeText={setHeight}
                 value={height}
                 placeholder='Ex: 1.75'
-                keyboardType='numeric'
+                keyboardType='default'
                 />
                 
                 <Text style={styles.formLabel}>Peso</Text>
@@ -60,10 +61,13 @@ export default function Form() {
                 onChangeText={setWeight}
                 value={weight}
                 placeholder='Ex: 75.5'
-                keyboardType='numeric'
+                keyboardType='default'
                 />
             <TouchableOpacity
-                onPress={() => {validationImc()}}
+                onPress={() => {
+                    validationImc(),
+                    Keyboard.dismiss()
+                }}
                 style={styles.buttonCalculator}>
                 <Text style={styles.textButtonCalculator}>{textButton}</Text>
             </TouchableOpacity>
